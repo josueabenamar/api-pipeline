@@ -2,19 +2,9 @@ version: 2.1
 orbs:
   node: circleci/node@3.0.1
 jobs:
-  build:
-    executor:
-      name: node/12.16.3
-    steps:
-      - checkout
-      - node/install-packages:
-           cache-path: ~/project/node_modules
-           override-ci-command: npm install
-      - run: npm run build
-
   build_artifact:
     executor:
-      name: node/default
+      name: node/12.16.3
     steps:
       - checkout
       - node/install-packages:
@@ -25,8 +15,10 @@ jobs:
       - run: mv dist $APP_NAME
       - run: tar cvf $APP_NAME.tar.gz $APP_NAME
       - run: mv $APP_NAME.tar.gz artifacts
+      - run: ls artifacts
+      - run: ls artifacts/**
       - store_artifacts:
-          path: artifacts/**
+          path: artifacts
 
 workflows:
     build:
