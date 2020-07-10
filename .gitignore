@@ -1,0 +1,35 @@
+# run & build process
+/build
+/out
+/dist
+/node_modules
+
+# sqlite storage
+/database
+/src/db/database/*
+
+# .env file
+.env
+.env.*
+
+# logs
+/logs
+*.log
+
+# system files
+.DS_Store
+*.swp
+*~
+.*.haste_cache.*
+*.pid
+
+# test coverage
+/coverage
+*.lcov
+test-reporter.xml
+
+# visual studio code files
+.vscode
+
+# jetbrains files
+.idea/
