@@ -4,7 +4,8 @@ orbs:
 jobs:
   build_artifact:
     executor:
-      name: node/12.16.3
+      name: node
+      tag: 12.16.3
     steps:
       - checkout
       - node/install-packages:
