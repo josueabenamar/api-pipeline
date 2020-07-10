@@ -7,10 +7,9 @@ jobs:
       name: node/12.16.3
     steps:
       - checkout
-      - node/with-cache:
-          steps:
-            - run: npm install
-            - run: npm run build
+      - node/install-packages:
+           override-ci-command: npm install
+      - run: npm run build
 
   build_artifact:
     executor:
