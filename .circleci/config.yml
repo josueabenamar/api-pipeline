@@ -9,19 +9,19 @@ jobs:
     steps:
       - checkout
       - node/install-packages:
-           cache-path: ~/project/node_modules
-           override-ci-command: npm install
+          cache-path: ~/project/node_modules
+          override-ci-command: npm install
       - run: npm run build
       - run: mkdir artifacts
       - run: mv dist $APP_NAME
       - run: tar cvf $APP_NAME.tar.gz $APP_NAME
       - run: mv $APP_NAME.tar.gz artifacts
-      - run: ls artifacts
-      - run: ls artifacts/**
+      - run: echo $ENV_HOST
       - store_artifacts:
           path: artifacts
 
 workflows:
     build:
       jobs:
-        - build_artifact
+        - build_artifact:
+            context: int-development
