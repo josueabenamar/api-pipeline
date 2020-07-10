@@ -8,6 +8,7 @@ jobs:
     steps:
       - checkout
       - node/install-packages:
+           cache-path: ~/project/node_modules
            override-ci-command: npm install
       - run: npm run build
 
@@ -17,13 +18,14 @@ jobs:
     steps:
       - checkout
       - node/install-packages:
+           cache-path: ~/project/node_modules
            override-ci-command: npm install
       - run: npm run build
       - run: mv dist $APP_NAME
       - run: tar cvf $APP_NAME.tar.gz $APP_NAME
       - run: mv $APP_NAME.tar.gz artifacts
       - store_artifacts:
-          path: artifacts/**
+          path: artifacts/$APP_NAME.tar.gz
 
 workflows:
     build:
