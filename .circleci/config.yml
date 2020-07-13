@@ -19,15 +19,20 @@ jobs:
       - run: echo $ENV_HOST
       - store_artifacts:
           path: artifacts
+  deployment:
+    steps:
+      - run: ls artifacts
+      - run: ssh
+      - run: scp
 
 workflows:
   build:
     jobs:
-      - build_artifact:
+      - build_artifact
+      - deployment:
+          requires:
+            - build_artifact
+          filters:
+            branches:
+              only: develop
           context: int-development
-
-deployment:
-  dev:
-    branch: develop
-    commands:
-      - ssh
