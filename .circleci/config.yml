@@ -21,7 +21,13 @@ jobs:
           path: artifacts
 
 workflows:
-    build:
-      jobs:
-        - build_artifact:
-            context: int-development
+  build:
+    jobs:
+      - build_artifact:
+          context: int-development
+
+deployment:
+  dev:
+    branch: develop
+    commands:
+      - ssh
