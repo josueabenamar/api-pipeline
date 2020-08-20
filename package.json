@@ -29,7 +29,7 @@
     "@apollo/federation": "^0.12.0",
     "apollo-datasource": "^0.2.2",
     "apollo-server": "^2.3.3",
-    "bcrypt": "^3.0.4",
+    "bcrypt": "^5.0.0",
     "cuid": "^2.1.6",
     "dotenv": "^6.2.0",
     "fs": "0.0.1-security",
